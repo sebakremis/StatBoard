@@ -63,7 +63,7 @@ def main():
             height=200,
             help="Reemplaza los valores del ejemplo con números enteros separados por espacios o comas."
         )
-        st.caption("💡 **Tip:** Puedes copiar datos desde una hoja de cálculo y pegarlos en el cuadro.")
+        st.caption("💡 **Tip:** Puedes copiar datos desde una hoja de cálculo o archivo .csv y pegarlos en el cuadro.")
     # Procesar los datos ingresados
     serie_valores=procesar_datos(entrada_usuario)
     
