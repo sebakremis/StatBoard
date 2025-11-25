@@ -3,7 +3,7 @@ import streamlit as st
 import altair as alt
 
 # Configuración de la página
-st.set_page_config(layout="wide", page_title="Estadística Descriptiva")
+st.set_page_config(layout="wide", page_title="Statboard", page_icon="📊")
 
 @st.cache_data
 def procesar_datos(cadena_valores: str) -> pd.Series:
