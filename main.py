@@ -53,7 +53,7 @@ def crear_tabla_estadistica(valores: pd.Series) -> pd.DataFrame:
 
 def main():
     st.title("📊 StatBoard")
-    st.write("Estadística Descriptiva para Valores Discretos")
+    st.write("Estadística Descriptiva")
     # --- Sidebar para entrada de datos ---
     with st.sidebar:
         st.header("Configuración de Datos")
