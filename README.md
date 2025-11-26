@@ -51,7 +51,7 @@ Si prefieres ejecutar la aplicación en tu entorno local:
 
 * `Streamlit`
 * `Pandas`
-* `Altair`
+* `Plotly`
 
 ---
 
