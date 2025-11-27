@@ -3,6 +3,7 @@ import streamlit as st
 from core.utils import procesar_datos
 from core.descriptive import crear_tabla_estadistica, calcular_metricas_principales
 from core.visualization import crear_histograma
+from core.intervals import crear_intervalos
 
 # --- Ocultar mensaje "Press Ctrl+Enter en st.text_area()" ---
 st.markdown("""
@@ -25,15 +26,14 @@ def main():
     with st.sidebar:
         st.header("Configuración de Datos")
         # Seleccionar datos discretos o continuos con intervalos
-        tipo_datos= st.radio("Tipo de Datos:", ("Discretos", "Continuos con Intervalos"))
-
+        tipo_datos= st.radio("Tipo de Datos:", ("Discretos", "Continuos con Intervalos"))  
         if tipo_datos == "Continuos con Intervalos":
-            st.info("⚠️ La funcionalidad para datos continuos con intervalos aún no está implementada.")
-            return  # Salir de la función principal si se selecciona esta opción
-        if tipo_datos == "Discretos":
-            pass
-
-
+            # Ingresar criterio de intervalos, opcionalmente número de intervalos
+            criterio_intervalos = st.selectbox("Criterio de Intervalos:", 
+                                              ("Raíz cuadrada", "Regla de Sturges", "Regla de Scott", "Número Personalizado"))
+            if criterio_intervalos == "Número Personalizado":
+                num_intervalos = st.number_input("Número de Intervalos:", min_value=1, value=5, step=1)
+                          
 
         with st.form("form_datos"):
             valores_default = "15 16 14 12 15 15 14 18 16 12 14 12 15 14 14 15 14 13 16 16 13 16 17 14 13 12 14 17 13 14 13 15 15 15 18 14 16 14 14 14 13 15 12 13 14 14 13 13 17 13"
@@ -46,7 +46,9 @@ def main():
             enviar = st.form_submit_button("Actualizar")
 
     # --- Procesar Datos ---
-    if enviar:        
+    if enviar:
+        
+
         serie_valores = procesar_datos(entrada_usuario)
 
         if serie_valores.empty:

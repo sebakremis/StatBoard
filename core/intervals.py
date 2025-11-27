@@ -45,6 +45,6 @@ def crear_intervalos(serie_valores: pd.Series,criterio_intervalos:str):
 
 
 # Ejemplo de uso:
-datos = pd.Series([1.5, 2.3, 2.9, 3.1, 4.0, 5.2, 5.5, 6.3, 7.8, 6.6 ])
-tabla_intervalos = crear_intervalos(datos, 'Scott')
-print(tabla_intervalos)
+# datos = pd.Series([1.5, 2.3, 2.9, 3.1, 4.0, 5.2, 5.5, 6.3, 7.8, 6.6 ])
+# tabla_intervalos = crear_intervalos(datos, 'Scott')
+# print(tabla_intervalos)
