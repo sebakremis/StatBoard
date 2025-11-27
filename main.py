@@ -35,6 +35,7 @@ def main():
                                               ("Raíz cuadrada", "Regla de Sturges", "Regla de Scott", "Número Personalizado"))
             if criterio_intervalos == "Número Personalizado":
                 num_intervalos = st.number_input("Número de Intervalos:", min_value=1, value=5, step=1)
+                criterio_intervalos = str(num_intervalos)
                           
 
         with st.form("form_datos"):
@@ -48,14 +49,18 @@ def main():
             enviar = st.form_submit_button("Actualizar")
 
     # --- Procesar Datos ---
-    if enviar:
-        
-
+    if enviar:       
         serie_valores = procesar_datos(entrada_usuario)
-
         if serie_valores.empty:
             st.warning("👈 Ingresa datos numéricos en el menú lateral, luego presiona Actualizar para actualizar el tablero.")
             return
+        if tipo_datos == "Continuos con Intervalos":
+            tabla_intervalos = crear_intervalos(serie_valores,criterio_intervalos)
+            serie_valores = pd.Series(
+                [tabla_intervalos['Marca de Clase'][i]
+                 for i, fi in enumerate(tabla_intervalos['Frecuencia Absoluta (fi)']) 
+                 for _ in range(fi)]
+            )
 
         st.write("## Distribución de Frecuencias")
         
