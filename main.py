@@ -26,7 +26,9 @@ def main():
     with st.sidebar:
         st.header("Configuración de Datos")
         # Seleccionar datos discretos o continuos con intervalos
-        tipo_datos= st.radio("Tipo de Datos:", ("Discretos", "Continuos con Intervalos"))  
+        tipo_datos= st.radio("Tipo de Datos:", ("Discretos", "Continuos con Intervalos"))
+
+        # Si es continuo con intervalos, definir criterio de intervalos  
         if tipo_datos == "Continuos con Intervalos":
             # Ingresar criterio de intervalos, opcionalmente número de intervalos
             criterio_intervalos = st.selectbox("Criterio de Intervalos:", 
