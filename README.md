@@ -11,7 +11,7 @@ StatBoard permite analizar datos **discretos** y **continuos** desde una única 
 
 ## ✨ Características Principales
 - **Procesamiento de Datos:** Entrada manual o pegado directo desde Excel/CSV.  
-- **Tablas Estadísticas Automáticas:** cálculo de frecuencias absolutas ($f_i$), relativas ($h_i$), acumuladas ($F_i, H_i$) y porcentajes.  
+- **Tablas Estadísticas Automáticas:** cálculo de frecuencias absolutas ($f_i$), relativas ($h_i$), acumuladas ($F_i, H_i$) y porcentajes. Permite exportar los datos a un fichero CSV. 
 - **Métricas Clave:** Media, Mediana, Moda, Varianza y Desviación Estándar.  
 - **Visualización Interactiva:** histogramas y gráficos dinámicos para distribución de frecuencias.  
 - **Selector de Modo:** opción para trabajar con datos **discretos** o **por intervalos** en la misma aplicación.  
