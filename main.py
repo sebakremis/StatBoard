@@ -39,7 +39,7 @@ def main():
                           
 
         with st.form("form_datos"):
-            valores_default = "15 16 14 12 15 15 14 18 16 12 14 12 15 14 14 15 14 13 16 16 13 16 17 14 13 12 14 17 13 14 13 15 15 15 18 14 16 14 14 14 13 15 12 13 14 14 13 13 17 13"
+            valores_default = "50 42 61 55 48 50 39 52 58 45 53 49 50 44 65 51 47 56 40 54 48 59 43 50 55 52 46 53 49 57 41 62 48 50 54 45 58 51 38 52 49 47 55 60 44 53 50 46 59 52 48 54 42 57 49 51 35 63 47 55 50 43 58 52 46 49 53 66 45 54 50 48 56 42 51 59 47 37 53 55 49 44 60 52 46 50 58 41 54 48 64 53 47 55 50 45 51 57 43 52"
             entrada_usuario = st.text_area(
                 "Datos:",
                 value=valores_default,
@@ -119,13 +119,18 @@ def main():
                          hide_index=True, 
                          column_config=config_columnas,
                          width='stretch')
+            
+
         else:
             # Configuración para Discretos
             config_columnas['Valores'] = st.column_config.NumberColumn(format="%.2f", width='small')
             st.dataframe(tabla_estadistica, 
                          width='stretch', 
                          column_config=config_columnas)
-
+            
+        # Mostrar cantidad de clases / intervalos
+        st.write(f"**Número de Clases / Intervalos:** {len(tabla_estadistica)}")
+        
         st.divider()
         
         col1, col2 = st.columns([1, 2])
