@@ -5,7 +5,7 @@ Este repositorio aloja **StatBoard**, una aplicación interactiva de Estadístic
 ---
 
 ## 🎯 Descripción General
-StatBoard permite analizar datos **discretos** y **continuos** (próximamente) desde una única interfaz.  
+StatBoard permite analizar datos **discretos** y **continuos** desde una única interfaz.  
 
 ---
 
@@ -14,7 +14,7 @@ StatBoard permite analizar datos **discretos** y **continuos** (próximamente) d
 - **Tablas Estadísticas Automáticas:** cálculo de frecuencias absolutas ($f_i$), relativas ($h_i$), acumuladas ($F_i, H_i$) y porcentajes.  
 - **Métricas Clave:** Media, Mediana, Moda, Varianza y Desviación Estándar.  
 - **Visualización Interactiva:** histogramas y gráficos dinámicos para distribución de frecuencias.  
-- **Selector de Modo (próximamente):** opción para trabajar con datos **discretos** o **continuos (intervalos)** en la misma aplicación.  
+- **Selector de Modo:** opción para trabajar con datos **discretos** o **por intervalos** en la misma aplicación.  
 
 ---
 
