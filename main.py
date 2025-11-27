@@ -1,6 +1,10 @@
 import pandas as pd
 import streamlit as st
-# --- Ocultar mensaje "Press Ctrl+Enter" ---
+from core.utils import procesar_datos
+from core.descriptive import crear_tabla_estadistica, calcular_metricas_principales
+from core.visualization import crear_histograma
+
+# --- Ocultar mensaje "Press Ctrl+Enter en st.text_area()" ---
 st.markdown("""
     <style>
     /* Hide the specific element that shows the input instructions */
@@ -9,10 +13,6 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
-
-from core.utils import procesar_datos
-from core.descriptive import crear_tabla_estadistica, calcular_metricas_principales
-from core.visualization import crear_histograma
 
 # Configuración de la página
 st.set_page_config(layout="wide", page_title="Statboard", page_icon="📊")
@@ -24,6 +24,16 @@ def main():
     # --- Sidebar para entrada de datos ---
     with st.sidebar:
         st.header("Configuración de Datos")
+        # Seleccionar datos discretos o continuos con intervalos
+        tipo_datos= st.radio("Tipo de Datos:", ("Discretos", "Continuos con Intervalos"))
+
+        if tipo_datos == "Continuos con Intervalos":
+            st.info("⚠️ La funcionalidad para datos continuos con intervalos aún no está implementada.")
+            return  # Salir de la función principal si se selecciona esta opción
+        if tipo_datos == "Discretos":
+            pass
+
+
 
         with st.form("form_datos"):
             valores_default = "15 16 14 12 15 15 14 18 16 12 14 12 15 14 14 15 14 13 16 16 13 16 17 14 13 12 14 17 13 14 13 15 15 15 18 14 16 14 14 14 13 15 12 13 14 14 13 13 17 13"
