@@ -47,6 +47,11 @@ Si prefieres ejecutar la aplicación en tu entorno local:
 
 ---
 
+## 🧭 Próximos Pasos
+
+* Agregar poligono de frecuencias y métricas al histograma.
+* Realizar test unitario para el cálculo de métricas principales y agrupadas.
+
 ## 🛠️ Librerías Utilizadas
 
 * `Streamlit`
