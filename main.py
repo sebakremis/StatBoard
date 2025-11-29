@@ -183,7 +183,7 @@ def main():
 
         # --- Valores atípicos ---
         st.divider()
-        st.subheader("Valores Atípicos")
+        st.subheader("Valores Atípicos (Outliers)")
         diagrama_de_cajas, valores_atipicos = crear_boxplot(metricas, serie_original)
 
         def _mostrar_advertencia_atipicos_():
