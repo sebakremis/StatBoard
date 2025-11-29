@@ -188,9 +188,8 @@ def main():
 
         def _mostrar_advertencia_atipicos_():
             '''
-            Renderiza una advertencia sobre valores atípicos.
+            Muestra una advertencia sobre valores atípicos.
             '''
-            st.write("#### Atención:")
             st.markdown("""
             Los valores atípicos son observaciones que se encuentran significativamente alejadas del resto de los datos. 
             Estos pueden influir en los resultados estadísticos y deben ser analizados cuidadosamente.
@@ -202,14 +201,14 @@ def main():
             st.pyplot(diagrama_de_cajas)        
         with col2:
             if len(valores_atipicos) == 0:
-                st.write("No se detectaron valores atipicos")
+                st.success("✅ **Todo en orden:** No se detectaron valores atípicos en la muestra.")
             elif len(valores_atipicos) == 1:
-                st.write("Se detectó 1 valor atípico:")
-                st.write(f"- {valores_atipicos[0]}")
+                st.warning("⚠️ **Atención:** Se detectó 1 valor atípico:")
+                st.write(f"[ {valores_atipicos[0]} ]")
                 _mostrar_advertencia_atipicos_()
             else:
-                st.write(f"Se dectectaron {len(valores_atipicos)} valores atípicos:")
-                st.write(", ".join([str(v) for v in valores_atipicos]))                    
+                st.warning(f"⚠️ **Atención:** Se dectectaron {len(valores_atipicos)} valores atípicos:")
+                st.write("[ "+", ".join([str(v) for v in valores_atipicos])+" ]")                    
                 _mostrar_advertencia_atipicos_()
 
 
