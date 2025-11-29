@@ -35,16 +35,21 @@ def calcular_metricas_principales(serie_valores: pd.Series) -> dict:
     moda_str = ", ".join(map(str, moda_series.tolist()))
     desvio_estandar = serie_valores.std()
     media = serie_valores.mean()
+    Q1 = serie_valores.quantile(0.25)
+    Q3 = serie_valores.quantile(0.75)
 
     return {
+        "n": len(serie_valores),
+        "Q1": Q1,
+        "Q3": Q3,
         "media": media,
         "mediana": serie_valores.median(),
-        "desviacion": desvio_estandar,
-        "varianza": serie_valores.var(),
         "moda": moda_str,
-        "n": len(serie_valores),
+        "varianza": serie_valores.var(),
+        "desviacion": desvio_estandar,        
         "coef_variacion": (serie_valores.std() / serie_valores.mean()) * 100 if serie_valores.mean() != 0 else 0,
-        "rango": serie_valores.max() - serie_valores.min()
+        "rango": serie_valores.max() - serie_valores.min(),        
+        "rango_intercuartilico": Q3 - Q1
     }
 
 def calcular_metricas_agrupadas(df_intervalos: pd.DataFrame) -> dict:
@@ -136,14 +141,22 @@ def calcular_metricas_agrupadas(df_intervalos: pd.DataFrame) -> dict:
     # Rango Total
     rango = df[col_ls].max() - df[col_li].min()
 
+    # Quartiles
+    Q1 = 0  
+    Q3 = 0
+    rango_intercuartilico = 0  
+
     return {
+        "n": N,
+        "Q1": Q1,  
+        "Q3": Q3,
         "media": media,
         "mediana": mediana,
-        "moda": moda,
-        "n": N,
+        "moda": moda,        
         "varianza": varianza,
         "desviacion": desviacion,
         "coef_variacion": cv,
-        "rango": rango
+        "rango": rango,
+        "rango_intercuartilico": rango_intercuartilico
     }
     

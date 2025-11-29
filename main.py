@@ -84,8 +84,8 @@ def main():
             metricas= calcular_metricas_agrupadas(tabla_estadistica)
 
 
-        else: # Discretos
-            # Para discretos, usamos la función existente
+        else: 
+            # Metricas para valores discretos
             tabla_estadistica = crear_tabla_estadistica(serie_original)
             metricas = calcular_metricas_principales(serie_original)
 
@@ -138,24 +138,30 @@ def main():
         col1, col2 = st.columns([1, 2])
 
         with col1:
-            st.subheader("Parámetros")
-
             # Visualización de métricas
-            kpi1, kpi2 = st.columns(2)
-            kpi1.metric("Media", f"{metricas['media']:.2f}")
-            kpi2.metric("Mediana", f"{metricas['mediana']:.2f}")
+            st.subheader("Parámetros")
+            kpi1, kpi2, kpi3 = st.columns(3)
+            kpi1.metric("N (Total)", metricas['n'])
+            kpi2.metric("Q1", f"{metricas['Q1']:.2f}")
+            kpi3.metric("Q3", f"{metricas['Q3']:.2f}")
             
-            kpi3, kpi4 = st.columns(2)
-            kpi3.metric("Moda", metricas['moda'])
-            kpi4.metric("N (Total)", metricas['n'])
+            
+            st.write("### Medidas de Tendencia Central")
+            kpi4, kpi5, kpi6 = st.columns(3)
+            kpi4.metric("Media", f"{metricas['media']:.2f}")
+            kpi5.metric("Mediana", f"{metricas['mediana']:.2f}")
+            kpi6.metric("Moda", metricas['moda'])
+            
+            st.write("### Medidas de Dispersión")
+            kpi7, kpi8, kpi9 = st.columns(3)           
+            kpi7.metric("Varianza", f"{metricas['varianza']:.2f}")
+            kpi8.metric("Desv. Estándar", f"{metricas['desviacion']:.2f}")
+            kpi9.metric("Coef. de Variación", f"{metricas['coef_variacion']:.2f}%")
+            kpi10, kpi11, pki12 = st.columns(3)
+            kpi10.metric("Rango", f"{metricas['rango']:.2f}")
+            kpi11.metric("Rango Intercuartílico", f"{metricas['rango_intercuartilico']:.2f}")
+            kpi12= st.empty()  # Espacio vacío para mantener la cuadrícula
 
-            kpi5, kpi6 = st.columns(2)
-            kpi5.metric("Varianza", f"{metricas['varianza']:.2f}")
-            kpi6.metric("Desv. Estándar", f"{metricas['desviacion']:.2f}")
-
-            kpi7, kpi8 = st.columns(2)
-            kpi7.metric("Coef. de Variación", f"{metricas['coef_variacion']:.2f}%")
-            kpi8.metric("Rango", f"{metricas['rango']:.2f}")
             
         with col2:
             # Generar Gráfico
