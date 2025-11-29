@@ -106,7 +106,7 @@ def crear_boxplot(metricas: dict, serie_original: pd.Series):
     # 3. Estética
     # -----------------------------------------------------
     ax.set_title('Diagrama de Caja', fontsize=16)
-    ax.set_ylabel('Valores de la Serie')
+    ax.set_ylabel('Valores')
     
     # Solo mostramos leyenda si hubo outliers
     if not outliers_series.empty:
