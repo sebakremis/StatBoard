@@ -140,6 +140,7 @@ def main():
             
         # Mostrar cantidad de clases / intervalos
         st.write(f"**Número de Clases / Intervalos:** {len(tabla_estadistica)}")
+        st.write(f"**Número Total de Datos (N):** {metricas['n']}")
         
         st.divider()
         
@@ -147,27 +148,28 @@ def main():
 
         with col1:
             # Visualización de métricas
-            st.subheader("Parámetros")
-            kpi1, kpi2, kpi3 = st.columns(3)
-            kpi1.metric("N (Total)", metricas['n'])
+            st.write("### Medidas de Posición")
+            kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+            kpi1.metric("Min", f"{metricas['minimo']:.2f}")
             kpi2.metric("Q1", f"{metricas['Q1']:.2f}")
-            kpi3.metric("Q3", f"{metricas['Q3']:.2f}")            
+            kpi3.metric("Q3", f"{metricas['Q3']:.2f}")
+            kpi4.metric("Max", f"{metricas['maximo']:.2f}")            
             
             st.write("### Medidas de Tendencia Central")
-            kpi4, kpi5, kpi6 = st.columns(3)
-            kpi4.metric("Media", f"{metricas['media']:.2f}")
-            kpi5.metric("Mediana", f"{metricas['mediana']:.2f}")
-            kpi6.metric("Moda", metricas['moda'])
+            kpi5, kpi6, kpi7 = st.columns(3)
+            kpi5.metric("Media", f"{metricas['media']:.2f}")
+            kpi6.metric("Mediana", f"{metricas['mediana']:.2f}")
+            kpi7.metric("Moda", metricas['moda'])
             
             st.write("### Medidas de Dispersión")
-            kpi7, kpi8, kpi9 = st.columns(3)           
-            kpi7.metric("Varianza", f"{metricas['varianza']:.2f}")
-            kpi8.metric("Desv. Estándar", f"{metricas['desviacion']:.2f}")
-            kpi9.metric("Coef. de Variación", f"{metricas['coef_variacion']:.2f}%")
-            kpi10, kpi11, pki12 = st.columns(3)
-            kpi10.metric("Rango", f"{metricas['rango']:.2f}")
-            kpi11.metric("Rango Intercuartílico", f"{metricas['rango_intercuartilico']:.2f}")
-            kpi12= st.empty()  # Espacio vacío para mantener la cuadrícula
+            kpi8, kpi9, kpi10 = st.columns(3)           
+            kpi8.metric("Varianza", f"{metricas['varianza']:.2f}")
+            kpi9.metric("Desv. Estándar", f"{metricas['desviacion']:.2f}")
+            kpi10.metric("Coef. de Variación", f"{metricas['coef_variacion']:.2f}%")
+            kpi11, kpi12, kpi13 = st.columns(3)
+            kpi11.metric("Rango", f"{metricas['rango']:.2f}")
+            kpi12.metric("Rango Intercuartílico", f"{metricas['rango_intercuartilico']:.2f}")
+            kpi13= st.empty()  # Espacio vacío para mantener la cuadrícula
             
         with col2:
             # Generar Gráfico
@@ -190,7 +192,7 @@ def main():
                 st.write("#### Atención:")
                 st.markdown("""
                 Los valores atípicos son observaciones que se encuentran significativamente alejadas del resto de los datos. 
-                Estos pueden influir en los resultados estadísticos y deben ser identificados y analizados cuidadosamente.
+                Estos pueden influir en los resultados estadísticos y deben ser analizados cuidadosamente.
                 """)
         with col2:
             # Diagrama de caja para valores atípicos

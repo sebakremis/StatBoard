@@ -37,9 +37,13 @@ def calcular_metricas_principales(serie_valores: pd.Series) -> dict:
     media = serie_valores.mean()
     Q1 = serie_valores.quantile(0.25)
     Q3 = serie_valores.quantile(0.75)
+    minimo = serie_valores.min()
+    maximo = serie_valores.max()
 
     return {
         "n": len(serie_valores),
+        "minimo": minimo,
+        "maximo": maximo,
         "Q1": Q1,
         "Q3": Q3,
         "media": media,
@@ -147,8 +151,15 @@ def calcular_metricas_agrupadas(df_intervalos: pd.DataFrame) -> dict:
     mediana= obtener_cuartil(N * 0.5)
     rango_intercuartilico = Q3 - Q1
 
+    # Calculo de Maximo y Minimo para retornar
+    minimo= df['Valores'].min()
+    maximo= df['Valores'].max()
+
+
     return {
         "n": N,
+        "minimo": minimo,
+        "maximo": maximo,
         "Q1": Q1,  
         "Q3": Q3,
         "media": media,
