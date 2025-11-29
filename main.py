@@ -85,7 +85,7 @@ def main():
             tabla_estadistica = crear_tabla_estadistica(serie_original)
             metricas = calcular_metricas_principales(serie_original)
 
-            # --- Fix ---
+            # Aseguramos que la columna 'Valores' exista para compatibilidad con gráficos
             tabla_estadistica = tabla_estadistica.reset_index()
             col_indice = tabla_estadistica.columns[0]
             tabla_estadistica.rename(columns={col_indice: 'Valores'}, inplace=True)
@@ -177,16 +177,24 @@ def main():
         # --- Valores atípicos ---
         st.divider()
         st.subheader("Valores Atípicos")
+        diagrama_de_cajas, valores_atipicos = crear_boxplot(metricas, tabla_estadistica)
+
         col1,col2 = st.columns(2)
         with col1:
-            st.write("#### Definición")
-            st.markdown("""
-            Los valores atípicos son observaciones que se encuentran significativamente alejadas del resto de los datos. 
-            Estos pueden influir en los resultados estadísticos y deben ser identificados y analizados cuidadosamente.
-            """)
+            if len(valores_atipicos) == 0:
+                st.write("No se detectaron valores atipicos")
+            else:
+                st.write(f"Se dectectaron {len(valores_atipicos)} valores atípicos:")
+                for val in valores_atipicos:
+                    st.write(f"- {val}")
+                st.write("#### Atención:")
+                st.markdown("""
+                Los valores atípicos son observaciones que se encuentran significativamente alejadas del resto de los datos. 
+                Estos pueden influir en los resultados estadísticos y deben ser identificados y analizados cuidadosamente.
+                """)
         with col2:
             # Diagrama de caja para valores atípicos
-            diagrama_de_cajas = crear_boxplot(metricas, tabla_estadistica)
+            
             st.pyplot(diagrama_de_cajas)
 
         # --- Creditos ---

@@ -75,6 +75,7 @@ def crear_boxplot(metricas: dict, tabla_estadistica: pd.DataFrame):
         (tabla_estadistica[col_valores] < limite_inferior) | 
         (tabla_estadistica[col_valores] > limite_superior)
     ].copy()
+    lista_outliers = outliers_df[col_valores].tolist() # Lista de valores atípicos para retorno
     
     if not outliers_df.empty:
         # Obtenemos los valores a graficar
@@ -91,7 +92,7 @@ def crear_boxplot(metricas: dict, tabla_estadistica: pd.DataFrame):
                    zorder=5, 
                    label='Outliers')
         
-        # Opcional: Agregar etiquetas de texto al lado del punto
+        # Agregar etiquetas de texto al lado del punto
         for val in valores_y:
             ax.text(1.02, val, f' {val}', verticalalignment='center', fontsize=8)
 
@@ -103,4 +104,4 @@ def crear_boxplot(metricas: dict, tabla_estadistica: pd.DataFrame):
     ax.legend(loc='upper right')
     ax.grid(True, linestyle='--', alpha=0.6, axis='y')
     
-    return fig
+    return fig, lista_outliers
