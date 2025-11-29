@@ -15,7 +15,7 @@ StatBoard permite analizar datos **discretos** y **continuos** desde una única 
 - **Métricas Clave:** Media, Mediana, Moda, Varianza y Desviación Estándar.  
 - **Visualización Interactiva:** histogramas y gráficos dinámicos para distribución de frecuencias.  
 - **Selector de Modo:** opción para trabajar con datos **discretos** o **por intervalos** en la misma aplicación.
-- **Detección de Valores Atípicos:** localiza valores atípicos (outliers), y se muestran en un gráfico de tipo Boxplot 
+- **Detección de Valores Atípicos:** se grafica un Diagrama de Cajas y se localizan valores atípicos, cuando los mismos se encuentren fuera de los limites de los bigotes (1.5 IQR).
 
 ---
 
