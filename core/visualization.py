@@ -23,7 +23,7 @@ def crear_histograma(tabla_estadistica: pd.DataFrame):
         ),
         yaxis_title='Frecuencia Absoluta',
         xaxis_title='Valores',
-        height=600
+        height=500
     )
 
     fig.update_traces(marker_line_color='white', marker_line_width=1)
@@ -105,7 +105,7 @@ def crear_boxplot(metricas: dict, serie_original: pd.Series):
     # -----------------------------------------------------
     # 3. Estética
     # -----------------------------------------------------
-    ax.set_title('Diagrama de Caja (Boxplot)', fontsize=16)
+    ax.set_title('Diagrama de Caja', fontsize=16)
     ax.set_ylabel('Valores de la Serie')
     
     # Solo mostramos leyenda si hubo outliers

@@ -144,7 +144,7 @@ def main():
         
         st.divider()
         
-        col1, col2 = st.columns([1, 2])
+        col1, col2 = st.columns(2)
 
         with col1:
             # Visualización de métricas
@@ -153,23 +153,27 @@ def main():
             kpi1.metric("Min", f"{metricas['minimo']:.2f}")
             kpi2.metric("Q1", f"{metricas['Q1']:.2f}")
             kpi3.metric("Q3", f"{metricas['Q3']:.2f}")
-            kpi4.metric("Max", f"{metricas['maximo']:.2f}")            
+            kpi4.metric("Max", f"{metricas['maximo']:.2f}")        
             
             st.write("### Medidas de Tendencia Central")
-            kpi5, kpi6, kpi7 = st.columns(3)
+            kpi5, kpi6, kpi7, kpi8 = st.columns(4)
             kpi5.metric("Media", f"{metricas['media']:.2f}")
             kpi6.metric("Mediana", f"{metricas['mediana']:.2f}")
             kpi7.metric("Moda", metricas['moda'])
+            kpi8= st.empty()  # Espacio vacío para mantener la cuadrícula
             
             st.write("### Medidas de Dispersión")
-            kpi8, kpi9, kpi10 = st.columns(3)           
-            kpi8.metric("Varianza", f"{metricas['varianza']:.2f}")
-            kpi9.metric("Desv. Estándar", f"{metricas['desviacion']:.2f}")
-            kpi10.metric("Coef. de Variación", f"{metricas['coef_variacion']:.2f}%")
-            kpi11, kpi12, kpi13 = st.columns(3)
-            kpi11.metric("Rango", f"{metricas['rango']:.2f}")
-            kpi12.metric("Rango Intercuartílico", f"{metricas['rango_intercuartilico']:.2f}")
-            kpi13= st.empty()  # Espacio vacío para mantener la cuadrícula
+            kpi9, kpi10, kpi11, kpi12 = st.columns(4)           
+            kpi9.metric("Varianza", f"{metricas['varianza']:.2f}")
+            kpi10.metric("Desv. Estándar", f"{metricas['desviacion']:.2f}")
+            kpi11.metric("Coef. de Variación", f"{metricas['coef_variacion']:.2f}%")
+            kpi12= st.empty()  
+
+            kpi13, kpi14, kpi15, kpi16 = st.columns(4)
+            kpi13.metric("Rango", f"{metricas['rango']:.2f}")
+            kpi14.metric("Rango Intercuartílico", f"{metricas['rango_intercuartilico']:.2f}")
+            kpi15= st.empty()  
+            kpi16= st.empty()
             
         with col2:
             # Generar Gráfico
@@ -192,8 +196,11 @@ def main():
             Estos pueden influir en los resultados estadísticos y deben ser analizados cuidadosamente.
             """)
 
-        col1,col2 = st.columns(2)
+        col1,col2 = st.columns([1,2])
         with col1:
+            # Diagrama de caja para valores atípicos           
+            st.pyplot(diagrama_de_cajas)        
+        with col2:
             if len(valores_atipicos) == 0:
                 st.write("No se detectaron valores atipicos")
             elif len(valores_atipicos) == 1:
@@ -204,10 +211,7 @@ def main():
                 st.write(f"Se dectectaron {len(valores_atipicos)} valores atípicos:")
                 st.write(", ".join([str(v) for v in valores_atipicos]))                    
                 _mostrar_advertencia_atipicos_()
-        with col2:
-            # Diagrama de caja para valores atípicos
-            
-            st.pyplot(diagrama_de_cajas)
+
 
         # --- Creditos ---
         st.divider()
