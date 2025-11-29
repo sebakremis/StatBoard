@@ -180,9 +180,9 @@ def main():
         # --- Valores atípicos ---
         st.divider()
         st.subheader("Valores Atípicos")
-        diagrama_de_cajas, valores_atipicos = crear_boxplot(metricas, tabla_estadistica)
+        diagrama_de_cajas, valores_atipicos = crear_boxplot(metricas, serie_original)
 
-        def _render_advertencia_atipicos_():
+        def _mostrar_advertencia_atipicos_():
             '''
             Renderiza una advertencia sobre valores atípicos.
             '''
@@ -199,11 +199,11 @@ def main():
             elif len(valores_atipicos) == 1:
                 st.write("Se detectó 1 valor atípico:")
                 st.write(f"- {valores_atipicos[0]}")
-                _render_advertencia_atipicos_()
+                _mostrar_advertencia_atipicos_()
             else:
                 st.write(f"Se dectectaron {len(valores_atipicos)} valores atípicos:")
                 st.write(", ".join([str(v) for v in valores_atipicos]))                    
-                _render_advertencia_atipicos_()
+                _mostrar_advertencia_atipicos_()
         with col2:
             # Diagrama de caja para valores atípicos
             
