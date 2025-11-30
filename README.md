@@ -51,7 +51,9 @@ Si prefieres ejecutar la aplicación en tu entorno local:
 ## 🧭 Próximos Pasos
 
 * Agregar polígono de frecuencias y métricas al histograma.
+* Análisis de simetría y curtosis.
 * Realizar test unitario para el cálculo de métricas principales y agrupadas.
+* Refactorizar main.py.
 
 ## 🛠️ Librerías Utilizadas
 
