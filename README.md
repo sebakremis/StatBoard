@@ -1,7 +1,6 @@
 # 📊 StatBoard: Herramienta de Estadística Descriptiva con Python
 
-Este repositorio aloja **StatBoard**, una aplicación interactiva de Estadística Descriptiva desarrollada con **Python** y **Streamlit** durante mis estudios del Master Data Science, Big Data & Business Analytics en la Universidad Complutense de Madrid.
-
+Este repositorio aloja **StatBoard**, una aplicación interactiva de Estadística Descriptiva desarrollada con **Python** y **Streamlit** durante mis estudios del Master ***Data Science, Big Data & Business Analytics***.
 ---
 
 ## 🎯 Descripción General
